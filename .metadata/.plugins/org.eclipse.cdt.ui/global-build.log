@@ -1,0 +1,315 @@
+11:53:11 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+Building file: ../Src/stm32f1xx_it.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8 - V1\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/stm32f1xx_it.d" -MT"Src/stm32f1xx_it.o" -o "Src/stm32f1xx_it.o" "../Src/stm32f1xx_it.c"
+In file included from C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Inc/stm32f1xx_hal_conf.h:319:0,
+                 from C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:46,
+                 from C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Inc/main.h:31,
+                 from ../Src/stm32f1xx_it.c:22:
+../Src/stm32f1xx_it.c: In function 'USART2_IRQHandler':
+../Src/stm32f1xx_it.c:206:34: error: 'huart2' undeclared (first use in this function)
+     if(__HAL_UART_GET_IT_SOURCE(&huart2, UART_IT_RXNE) != RESET)
+                                  ^
+C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:507:100: note: in definition of macro '__HAL_UART_GET_IT_SOURCE'
+ #define __HAL_UART_GET_IT_SOURCE(__HANDLE__, __IT__) (((((__IT__) >> 28U) == UART_CR1_REG_INDEX)? (__HANDLE__)->Instance->CR1:(((((uint32_t)(__IT__)) >> 28U) == UART_CR2_REG_INDEX)? \
+                                                                                                    ^~~~~~~~~~
+../Src/stm32f1xx_it.c:206:34: note: each undeclared identifier is reported only once for each function it appears in
+     if(__HAL_UART_GET_IT_SOURCE(&huart2, UART_IT_RXNE) != RESET)
+                                  ^
+C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:507:100: note: in definition of macro '__HAL_UART_GET_IT_SOURCE'
+ #define __HAL_UART_GET_IT_SOURCE(__HANDLE__, __IT__) (((((__IT__) >> 28U) == UART_CR1_REG_INDEX)? (__HANDLE__)->Instance->CR1:(((((uint32_t)(__IT__)) >> 28U) == UART_CR2_REG_INDEX)? \
+                                                                                                    ^~~~~~~~~~
+Src/subdir.mk:30: recipe for target 'Src/stm32f1xx_it.o' failed
+make: *** [Src/stm32f1xx_it.o] Error 1
+11:53:20 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+Building file: ../Src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8 - V1\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c: In function 'RXCallback':
+../Src/main.c:68:9: warning: implicit declaration of function 'CycleComplete' [-Wimplicit-function-declaration]
+         CycleComplete();
+         ^~~~~~~~~~~~~
+Finished building: ../Src/main.c
+ 
+Building file: ../Src/stm32f1xx_hal_msp.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8 - V1\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/stm32f1xx_hal_msp.d" -MT"Src/stm32f1xx_hal_msp.o" -o "Src/stm32f1xx_hal_msp.o" "../Src/stm32f1xx_hal_msp.c"
+Finished building: ../Src/stm32f1xx_hal_msp.c
+ 
+Building file: ../Src/stm32f1xx_it.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8 - V1\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/stm32f1xx_it.d" -MT"Src/stm32f1xx_it.o" -o "Src/stm32f1xx_it.o" "../Src/stm32f1xx_it.c"
+Finished building: ../Src/stm32f1xx_it.c
+ 
+Building target: STM32F103C8 - V1.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -specs=nosys.specs -specs=nano.specs -T"../STM32F103C8Tx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "STM32F103C8 - V1.elf" @"objects.list"   -lm
+Src/main.o: In function `RXCallback':
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8 - V1\Debug/../Src/main.c:68: undefined reference to `CycleComplete'
+collect2.exe: error: ld returned 1 exit status
+make: *** [STM32F103C8 - V1.elf] Error 1
+makefile:35: recipe for target 'STM32F103C8 - V1.elf' failed
+11:54:27 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+Building file: ../Src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8 - V1\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8 - V1/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+Finished building: ../Src/main.c
+ 
+Building target: STM32F103C8 - V1.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -specs=nosys.specs -specs=nano.specs -T"../STM32F103C8Tx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "STM32F103C8 - V1.elf" @"objects.list"   -lm
+Finished building target: STM32F103C8 - V1.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "STM32F103C8 - V1.elf" "STM32F103C8 - V1.hex"
+arm-none-eabi-size "STM32F103C8 - V1.elf"
+   text	   data	    bss	    dec	    hex	filename
+   6904	     20	   2116	   9040	   2350	STM32F103C8 - V1.elf
+ 
+11:54:41 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+11:54:55 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+11:55:29 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:12:22 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:13:42 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:20:23 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:20:39 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:20:51 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:20:57 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:21:24 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:21:32 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:22:11 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:23:26 **** Incremental Build of configuration Debug for project STM32F103C8 - V1 ****
+make all 
+make: Nothing to be done for 'all'.
+13:25:08 **** Clean-only build of configuration Debug for project STM32F103C8 ****
+make clean 
+rm -rf *
+ 
+13:25:09 **** Build of configuration Debug for project STM32F103C8 ****
+make all 
+Building file: ../startup/startup_stm32f103xb.s
+Invoking: MCU GCC Assembler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-as -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -g -o "startup/startup_stm32f103xb.o" "../startup/startup_stm32f103xb.s"
+Finished building: ../startup/startup_stm32f103xb.s
+ 
+Building file: ../Src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+Finished building: ../Src/main.c
+ 
+Building file: ../Src/stm32f1xx_hal_msp.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/stm32f1xx_hal_msp.d" -MT"Src/stm32f1xx_hal_msp.o" -o "Src/stm32f1xx_hal_msp.o" "../Src/stm32f1xx_hal_msp.c"
+Finished building: ../Src/stm32f1xx_hal_msp.c
+ 
+Building file: ../Src/stm32f1xx_it.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/stm32f1xx_it.d" -MT"Src/stm32f1xx_it.o" -o "Src/stm32f1xx_it.o" "../Src/stm32f1xx_it.c"
+Finished building: ../Src/stm32f1xx_it.c
+ 
+Building file: ../Src/syscalls.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" -o "Src/syscalls.o" "../Src/syscalls.c"
+Finished building: ../Src/syscalls.c
+ 
+Building file: ../Src/system_stm32f1xx.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/system_stm32f1xx.d" -MT"Src/system_stm32f1xx.o" -o "Src/system_stm32f1xx.o" "../Src/system_stm32f1xx.c"
+Finished building: ../Src/system_stm32f1xx.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
+ 
+Building file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
+Invoking: MCU GCC Compiler
+C:\Users\Ruben\Documents\School\2019-2020\MNLE-Synth\MNLE-SOFTWARE\STM32F103C8\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F103xB -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Ruben/Documents/School/2019-2020/MNLE-Synth/MNLE-SOFTWARE/STM32F103C8/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o" -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o" "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c"
+Finished building: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
+ 
+Building target: STM32F103C8.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -specs=nosys.specs -specs=nano.specs -T"../STM32F103C8Tx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "STM32F103C8.elf" @"objects.list"   -lm
+Finished building target: STM32F103C8.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "STM32F103C8.elf" "STM32F103C8.hex"
+arm-none-eabi-size "STM32F103C8.elf"
+   text	   data	    bss	    dec	    hex	filename
+   6904	     20	   2116	   9040	   2350	STM32F103C8.elf
+ 
+13:25:55 **** Incremental Build of configuration Debug for project STM32F103C8 ****
+make all 
+make: Nothing to be done for 'all'.
+13:26:45 **** Incremental Build of configuration Debug for project STM32F103C8 ****
+make all 
+make: Nothing to be done for 'all'.
+13:28:40 **** Incremental Build of configuration Debug for project STM32F103C8 ****
+make all 
+Building target: STM32F103C8.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -specs=nosys.specs -specs=nano.specs -T"../STM32F103C8Tx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "STM32F103C8.elf" @"objects.list"   -lm
+Finished building target: STM32F103C8.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "STM32F103C8.elf" "STM32F103C8.hex"
+arm-none-eabi-size "STM32F103C8.elf"
+   text	   data	    bss	    dec	    hex	filename
+   6904	     20	   2116	   9040	   2350	STM32F103C8.elf
+ 
+13:33:43 **** Incremental Build of configuration Debug for project STM32F103C8 ****
+make all 
+Building target: STM32F103C8.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -specs=nosys.specs -specs=nano.specs -T"../STM32F103C8Tx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "STM32F103C8.elf" @"objects.list"   -lm
+Finished building target: STM32F103C8.elf
+ 
+make --no-print-directory post-build
+Generating hex and Printing size information:
+arm-none-eabi-objcopy -O ihex "STM32F103C8.elf" "STM32F103C8.hex"
+arm-none-eabi-size "STM32F103C8.elf"
+   text	   data	    bss	    dec	    hex	filename
+   6904	     20	   2116	   9040	   2350	STM32F103C8.elf
+ 
+13:34:24 **** Incremental Build of configuration Debug for project STM32F103C8 ****
+make all 
+make: Nothing to be done for 'all'.
