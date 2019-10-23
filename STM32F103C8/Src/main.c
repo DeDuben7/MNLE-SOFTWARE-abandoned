@@ -38,10 +38,17 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-volatile uint8_t response[255];
-volatile uint8_t responseCounter = 0;
-uint8_t estimatedCounter = 0;
+
 /* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+ADC_HandleTypeDef hadc1;
+
+I2C_HandleTypeDef hi2c2;
+
+SPI_HandleTypeDef hspi2;
+
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
@@ -60,19 +67,6 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void RXCallback()
-{
-    response[responseCounter] = (uint8_t)(USART1->DR & 0x00FF);
-    if(responseCounter == estimatedCounter)
-    {
-
-    }
-    else
-    {
-        __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);
-        responseCounter++;
-    }
-}
 
 /* USER CODE END 0 */
 
@@ -92,7 +86,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  GPIO_Init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -103,7 +97,7 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
+//  MX_GPIO_Init();
   MX_ADC1_Init();
   MX_I2C2_Init();
   MX_SPI2_Init();
@@ -133,7 +127,7 @@ void SystemClock_Config(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -143,7 +137,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -181,7 +175,7 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 1 */
 
   /* USER CODE END ADC1_Init 1 */
-  /** Common config 
+  /** Common config
   */
   hadc1.Instance = ADC1;
   hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
@@ -194,7 +188,7 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
-  /** Configure Regular Channel 
+  /** Configure Regular Channel
   */
   sConfig.Channel = ADC_CHANNEL_4;
   sConfig.Rank = ADC_REGULAR_RANK_1;
@@ -330,6 +324,115 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void GPIO_Init()
+{
+MX_GPIO_Init();
+GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+// UART-RX PIN PA3
+GPIO_InitStruct.Pin = GPIO_PIN_3;
+GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+// UART-TX PIN PA2
+GPIO_InitStruct.Pin = GPIO_PIN_2;
+GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+
+// ADC1_IN0
+GPIO_InitStruct.Pin = GPIO_PIN_0;
+GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+// ADC1_IN1
+GPIO_InitStruct.Pin = GPIO_PIN_1;
+GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+// ADC1_IN4
+GPIO_InitStruct.Pin = GPIO_PIN_4;
+GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+// ADC1_IN5
+GPIO_InitStruct.Pin = GPIO_PIN_5;
+GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+
+// ADC1_IN6
+GPIO_InitStruct.Pin = GPIO_PIN_6;
+GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+// ADC1_IN7
+GPIO_InitStruct.Pin = GPIO_PIN_7;
+GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+// ADC1_IN8
+GPIO_InitStruct.Pin = GPIO_PIN_0;
+GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+
+// ADC1_IN9
+GPIO_InitStruct.Pin = GPIO_PIN_1;
+GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+
+//I2C_CLOCK
+GPIO_InitStruct.Pin = GPIO_PIN_10;
+GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+
+//I2C_DATA
+GPIO_InitStruct.Pin = GPIO_PIN_11;
+GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+
+//SPI
+GPIO_InitStruct.Pin = GPIO_PIN_15 || GPIO_PIN_14 || GPIO_PIN_13;
+GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+GPIO_InitStruct.Pull = GPIO_NOPULL;
+HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+
+//YM3812 PINS PART 1
+GPIO_InitStruct.Pin = GPIO_PIN_2|| GPIO_PIN_3|| GPIO_PIN_4|| GPIO_PIN_5|| GPIO_PIN_6|| GPIO_PIN_7|| GPIO_PIN_8||GPIO_PIN_9||GPIO_PIN_12;
+GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+//YM3812 PINS PART 2
+GPIO_InitStruct.Pin = GPIO_PIN_8||GPIO_PIN_9||GPIO_PIN_10||GPIO_PIN_11|| GPIO_PIN_12|| GPIO_PIN_13|| GPIO_PIN_14||GPIO_PIN_15;
+GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+
+}
 
 /* USER CODE END 4 */
 
@@ -354,7 +457,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(uint8_t *file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
