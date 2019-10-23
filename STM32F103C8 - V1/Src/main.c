@@ -291,11 +291,11 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
-  huart2.Init.WordLength = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.BaudRate = 32500; //Baudrate of MIDI messages is 32500 baud
+  huart2.Init.WordLength = UART_WORDLENGTH_8B; //Wordlenght is 8b
+  huart2.Init.StopBits = UART_STOPBITS_1; //There will be one stopbit
+  huart2.Init.Parity = UART_PARITY_NONE; //There is no paritybit
+  huart2.Init.Mode = UART_MODE_TX_RX; //Use RX for receiving MIDI and TX for sending messages to serial monitor via Arduino
   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart2.Init.OverSampling = UART_OVERSAMPLING_16;
   if (HAL_UART_Init(&huart2) != HAL_OK)
