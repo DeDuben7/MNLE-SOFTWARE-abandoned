@@ -11,7 +11,7 @@
 
 #include 	"MIDI.h"
 
-int MIDI_PROC(uint8_t MIDI_DATA[2])
+void MIDI_PROC(uint8_t MIDI_DATA[2])
 {
 	uint8_t MIDI_STATUS;								// binnengekomen status byte
 	uint8_t FUNC_VAR[1];								// binnengekomen data voor de functies
@@ -19,6 +19,7 @@ int MIDI_PROC(uint8_t MIDI_DATA[2])
 	char MIDI_CHANNEL;									// variabele om channel nibble op te slaan
 	int err = 0;											// error variabele
 
+	MIDI_STATUS = MIDI_DATA[1];
 	MIDI_FUNC = (char)(MIDI_STATUS & 0x0F);				// lsb bits van byte omzetten in nibble
 	MIDI_CHANNEL = (char)((MIDI_STATUS & 0x0F)>>4);		// msb bits van byte omzetten in nibble
 
@@ -44,11 +45,6 @@ int MIDI_PROC(uint8_t MIDI_DATA[2])
 	case PITCH:
 		err = YM_PITCH(MIDI_CHANNEL,FUNC_VAR[1]);
 		break;
-
-	return err;
 	}
-
-
-
 
 }
