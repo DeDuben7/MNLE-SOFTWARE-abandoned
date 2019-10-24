@@ -200,19 +200,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
-void USART2_IRQHandler(void)
-{
-    /* USER CODE BEGIN USART2_IRQn 0 */
-    if(__HAL_UART_GET_IT_SOURCE(&huart2, UART_IT_RXNE) != RESET)
-    {
-        RXCallback();
-    }
-    HAL_NVIC_ClearPendingIRQ(USART2_IRQn);
-    /* USER CODE END USART2_IRQn 0 */
-    HAL_UART_IRQHandler(&huart2);
-    /* USER CODE BEGIN USART2_IRQn 1 */
 
-    /* USER CODE END USART2_IRQn 1 */
-}
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

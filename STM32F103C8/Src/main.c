@@ -56,32 +56,31 @@ UART_HandleTypeDef huart2;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void GPIO_Init(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-volatile uint8_t response[255];
-volatile uint8_t responseCounter = 0;
-uint8_t estimatedCounter = 0;
+UART_HandleTypeDef UartHandle;
+__IO ITStatus UartReady = RESET;
+char commBuff[50];
+char action[50];
+
+#define RXBUFFERSIZE    10
+uint8_t aRxBuffer[RXBUFFERSIZE];
+
+char buffbuff[100];
+uint8_t bufferRx[5];
+char prompt[5] = "\r\n>>>";
+int commBuff_index=0;
+int sent_index=0;
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void RXCallback()
-{
-    response[responseCounter] = (uint8_t)(USART2->DR & 0x00FF);
-    if(responseCounter == estimatedCounter)
-    {
-        //
-    }
-    else
-    {
-        __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);
-        responseCounter++;
-    }
-}
 
 /* USER CODE END 0 */
 
@@ -101,7 +100,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  void GPIO_Init(void);
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -112,24 +111,53 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-//  MX_GPIO_Init();
+//MX_GPIO_Init();
+  GPIO_Init();
   MX_ADC1_Init();
   MX_I2C2_Init();
   MX_SPI2_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE); // flag receive
+  __HAL_UART_ENABLE_IT(&huart2, UART_IT_TC); // flat Tx_IT
 
-  /* USER CODE END 2 */
+  HAL_UART_Receive_IT(&huart2, bufferRx, 5);
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
+}
+
+
+void USART2_IRQHandler(void)
+{
+  // USER CODE BEGIN USART1_IRQn 0
+  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+  // USER CODE END USART1_IRQn 0
+  HAL_UART_IRQHandler(&huart2);
+  // USER CODE BEGIN USART1_IRQn 1
+  // get char from UART...
+  HAL_UART_Receive_IT(&huart2, bufferRx, 1);
+  // write the bytes to our Command buffer
+  commBuff[commBuff_index] = bufferRx[0];
+  if (bufferRx[0] == '\r' || bufferRx[0] == '\n')
+  {
+	  UartReady = SET;
+	  HAL_UART_Transmit(&huart2, (uint8_t*)commBuff, 50, 100);
+	  sent_index=commBuff_index;
+	  bufferRx[0] = '\0';
+	  commBuff_index = 0;
+  }
+  // use normal transmit (not transmit_IT) so we don't
+  // get duplicates in the buffer
+  // TODO - stop using this dirty hack...
+  HAL_UART_Transmit(&huart2, bufferRx, 5,100);
+  commBuff_index++;
+  //memset(bufferRx, 0, 5);
+  //bufferRx[0] = '\0';
+
+  //USER CODE END USART1_IRQn 1
 }
 
 /**
@@ -317,10 +345,6 @@ static void MX_USART2_UART_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN USART2_Init 2 */
-
-  /* USER CODE END USART2_Init 2 */
-
 }
 
 /**
@@ -332,10 +356,10 @@ static void MX_GPIO_Init(void)
 {
 
   /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
-
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
 }
 
 /* USER CODE BEGIN 4 */
@@ -343,19 +367,6 @@ void GPIO_Init()
 {
 	MX_GPIO_Init();
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-	// UART-RX PIN PA3
-	GPIO_InitStruct.Pin = GPIO_PIN_3;
-	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-	// UART-TX PIN PA2
-	GPIO_InitStruct.Pin = GPIO_PIN_2;
-	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
 
 	// ADC1_IN0
 	GPIO_InitStruct.Pin = GPIO_PIN_0;
@@ -445,8 +456,15 @@ void GPIO_Init()
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-}
 
+
+	//LED PIN
+	GPIO_InitStruct.Pin = GPIO_PIN_13;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+}
 /* USER CODE END 4 */
 
 /**
