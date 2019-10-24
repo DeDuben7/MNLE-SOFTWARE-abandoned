@@ -62,21 +62,9 @@ static void MX_ADC1_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_USART2_UART_Init(void);
+
 /* USER CODE BEGIN PFP */
-UART_HandleTypeDef UartHandle;
-__IO ITStatus UartReady = RESET;
-char commBuff[50];
-char action[50];
-
-#define RXBUFFERSIZE    10
-uint8_t aRxBuffer[RXBUFFERSIZE];
-
-char buffbuff[100];
-uint8_t bufferRx[5];
-char prompt[5] = "\r\n>>>";
-int commBuff_index=0;
-int sent_index=0;
-
+uint8_t byte;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -111,17 +99,16 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-//MX_GPIO_Init();
+
   GPIO_Init();
   MX_ADC1_Init();
   MX_I2C2_Init();
   MX_SPI2_Init();
   MX_USART2_UART_Init();
-  /* USER CODE BEGIN 2 */
-  __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE); // flag receive
-  __HAL_UART_ENABLE_IT(&huart2, UART_IT_TC); // flat Tx_IT
 
-  HAL_UART_Receive_IT(&huart2, bufferRx, 5);
+  /* USER CODE BEGIN 2 */
+
+  HAL_UART_Receive_IT(&huart2, &byte, 1);
 
   while (1)
   {
@@ -129,35 +116,26 @@ int main(void)
   }
 }
 
-
+/**
+  * @brief UART interrupt handler
+  * @retval None
+  */
 void USART2_IRQHandler(void)
 {
-  // USER CODE BEGIN USART1_IRQn 0
-  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-  // USER CODE END USART1_IRQn 0
-  HAL_UART_IRQHandler(&huart2);
-  // USER CODE BEGIN USART1_IRQn 1
-  // get char from UART...
-  HAL_UART_Receive_IT(&huart2, bufferRx, 1);
-  // write the bytes to our Command buffer
-  commBuff[commBuff_index] = bufferRx[0];
-  if (bufferRx[0] == '\r' || bufferRx[0] == '\n')
-  {
-	  UartReady = SET;
-	  HAL_UART_Transmit(&huart2, (uint8_t*)commBuff, 50, 100);
-	  sent_index=commBuff_index;
-	  bufferRx[0] = '\0';
-	  commBuff_index = 0;
-  }
-  // use normal transmit (not transmit_IT) so we don't
-  // get duplicates in the buffer
-  // TODO - stop using this dirty hack...
-  HAL_UART_Transmit(&huart2, bufferRx, 5,100);
-  commBuff_index++;
-  //memset(bufferRx, 0, 5);
-  //bufferRx[0] = '\0';
+	HAL_UART_IRQHandler(&huart2);
+}
 
-  //USER CODE END USART1_IRQn 1
+/* This callback is called by the HAL_UART_IRQHandler when the given number of bytes are received */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if (huart->Instance == USART2)
+	{
+		/* Transmit one byte with 100 ms timeout */
+		HAL_UART_Transmit(&huart2, &byte, 1, 10);
+
+		/* Receive one byte in interrupt mode */
+		HAL_UART_Receive_IT(&huart2, &byte, 1);
+	}
 }
 
 /**
@@ -345,6 +323,9 @@ static void MX_USART2_UART_Init(void)
   {
     Error_Handler();
   }
+
+  HAL_NVIC_SetPriority(USART2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(USART2_IRQn);
 }
 
 /**
