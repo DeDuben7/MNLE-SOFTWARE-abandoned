@@ -51,7 +51,12 @@ SPI_HandleTypeDef hspi2;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+uint8_t data;
+uint8_t buf1[3];
+uint8_t buf2[3];
+uint8_t buflen;
+bool BUF1_FLAG = FALSE;
+bool BUF2_FLAG = TRUE;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -125,17 +130,40 @@ void USART2_IRQHandler(void)
 	HAL_UART_IRQHandler(&huart2);
 }
 
-uint8_t buf1[3];
-uint8_t buf2[3];
-bool BUF1_FLAG = FALSE;
-bool BUF2_FLAG = TRUE;
-
 /* This callback is called by the HAL_UART_IRQHandler when the given number of bytes are received */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if (huart->Instance == USART2)
 	{
+		if(data & 128) //check if new data block is received
+		{
+			if((BUF1_FLAG != 1) && (BUF2_FLAG == 1)) //write new data to buf1 and send buf2 to MIDI_CONT
+			{
+				MIDI_CONT(buf2, buflen);
+				BUF1_FLAG = TRUE;
+				BUF2_FLAG = FALSE;
+				buflen = 0;
+				buf1[buflen++] = data;
+			}
 
+			if((BUF1_FLAG == 1) && (BUF2_FLAG != 1)) //write new data to buf2 and send buf1 to MIDI_CONT
+			{
+				MIDI_CONT(buf1, buflen);
+				BUF1_FLAG = FALSE;
+				BUF2_FLAG = TRUE;
+				buflen = 0;
+				buf2[buflen++] = data;
+			}
+		}
+
+		else
+		{
+			if((BUF1_FLAG != 1) && (BUF2_FLAG == 1)) //write data to buf2
+				buf2[buflen++] = data;
+
+			else if((BUF1_FLAG == 1) && (BUF2_FLAG != 1)) //write data to buf1
+				buf1[buflen++] = data;
+		}
 	}
 }
 
