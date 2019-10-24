@@ -68,9 +68,6 @@ I2C_HandleTypeDef hi2c2;
 SPI_HandleTypeDef hspi2;
 
 UART_HandleTypeDef huart2;
-
-typedef enum boolean {FALSE,TRUE} bool;
-
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

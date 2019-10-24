@@ -64,7 +64,7 @@ static void MX_SPI2_Init(void);
 static void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN PFP */
-uint8_t byte = 0;
+uint8_t byte;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -125,17 +125,16 @@ void USART2_IRQHandler(void)
 	HAL_UART_IRQHandler(&huart2);
 }
 
-uint8_t buf1[3];
-uint8_t buf2[3];
-bool BUF1_FLAG = FALSE;
-bool BUF2_FLAG = TRUE;
-
 /* This callback is called by the HAL_UART_IRQHandler when the given number of bytes are received */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if (huart->Instance == USART2)
 	{
+		/* Transmit one byte with 100 ms timeout */
+		HAL_UART_Transmit(&huart2, &byte, 1, 10);
 
+		/* Receive one byte in interrupt mode */
+		HAL_UART_Receive_IT(&huart2, &byte, 1);
 	}
 }
 
