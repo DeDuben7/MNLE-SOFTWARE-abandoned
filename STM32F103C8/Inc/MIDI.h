@@ -32,4 +32,4 @@
  * Functions
 *********************************************************************************************************
 */
-void MIDI_PROC(uint8_t MIDI_DATA[2]);
+void MIDI_PROC(uint8_t MIDI_DATA[2],uint8_t buflen);
